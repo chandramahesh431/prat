@@ -1,0 +1,23 @@
+.zippy
+{
+border:3px solid red;
+border-radius: 2px;
+cursor: pointer;
+}
+
+.zippy-header
+{
+background-color: tan;
+padding: 20px;
+}
+
+.zippy-body
+{
+background-color:white;
+padding: 20px;
+}
+.glyphicon
+{
+float:right;
+
+}
