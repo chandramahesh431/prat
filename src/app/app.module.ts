@@ -1,9 +1,11 @@
 import { CousersService } from './courses.service';
 import { CoursesComponent } from './courses.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule} from '@angular/router';
+import {testComponent} from './test.component';
+import { HttpModule } from '@angular/http';
 
 
 import { AppComponent } from './app.component';
@@ -24,6 +26,29 @@ import { AuthGuardService } from './common/auth-guard.service';
 import { AuthReturnUrlService } from './common/auth-returnUrl';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { usernameValidator } from './reactive-forms/username.validator';
+import { ChandraComponent } from './chandra/chandra.component';
+import { ChandraService } from './chandra.service';
+import { FarvoriteComponent } from './farvorite/farvorite.component';
+import { TitleCaseComponent } from './title-case/title-case.component';
+import { TitleCasePipe } from './title-case.pipe';
+import { PanelBootstrapComponent } from './panel-bootstrap/panel-bootstrap.component';
+import { LikesCountComponent } from './likes-count/likes-count.component';
+import { DirectiveExamplesComponent } from './directive-examples/directive-examples.component';
+import { FormatInputDirective } from './format-input.directive';
+import { TemplateFormComponent } from './template-form/template-form.component';
+import { PostsComponent } from './posts/posts.component';
+import { PostsService } from './services/posts.service';
+import { myhandleErrorGlobally } from './common/appErrorGlobally';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FollwersComponent } from './follwers/follwers.component';
+import { Home123Component } from './home123/home123.component';
+import { FollowComponent } from './follow/follow.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfComponent } from './prof/prof.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { SignFormComponent } from './sign-form/sign-form.component';
+import { TemplateFormNewComponent } from './template-form-new/template-form-new.component';
+
 
 
 @NgModule({
@@ -41,12 +66,41 @@ import { usernameValidator } from './reactive-forms/username.validator';
     AdminComponent,
     NotAccessComponent,
     HomeComponent,
-    ReactiveFormsComponent 
+    ReactiveFormsComponent,
+    testComponent,
+    ChandraComponent,
+    FarvoriteComponent,
+    TitleCaseComponent,
+    TitleCasePipe,
+    PanelBootstrapComponent,
+    LikesCountComponent,
+    DirectiveExamplesComponent,
+    FormatInputDirective,
+    TemplateFormComponent,
+    PostsComponent,
+    NavbarComponent,
+    Home123Component,
+    FollowComponent,
+    ProfComponent,
+    NotFoundPageComponent,
+    SignFormComponent,
+    TemplateFormNewComponent
       ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(
+      [
+        {path:'',component:Home123Component},
+          {path:'followers/:id',component:ProfComponent},
+          {path:'followers',component:FollowComponent},
+          {path:'posts',component:PostsComponent},
+          {path:'**',component:NotFoundPageComponent}
+    ]
+    )
     // RouterModule.forRoot(
     //   [
     //     {path:'',component:HomeComponent},
@@ -58,7 +112,7 @@ import { usernameValidator } from './reactive-forms/username.validator';
     //   ]
     // )
   ],
-  providers: [CousersService,AuthService,AuthGuardService,AuthReturnUrlService,usernameValidator],
+  providers: [CousersService,AuthService,AuthGuardService,AuthReturnUrlService,usernameValidator,ChandraService,PostsService,{provide:ErrorHandler,useClass:myhandleErrorGlobally}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

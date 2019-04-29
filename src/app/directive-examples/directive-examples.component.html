@@ -1,0 +1,14 @@
+
+<button (click)="addcourse()">addcourse</button>
+<ul>
+<li *ngFor="let course of courses;index as i;even as isEven">
+{{course.name}}-{{i}}<button (click)="removecourse()">Remove</button>
+<span *ngIf="isEven">Even</span>
+</li>
+
+</ul>
+{{viewMode}}
+<button [class.active]="viewMode=='map'">Map</button>
+<button [class.active]="viewMode=='list'">List</button>
+
+<input type="text" [appFormatInput]="'lowercase'">

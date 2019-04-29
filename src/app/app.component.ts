@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {farvoriteInputType} from './farvorite/farvorite.component';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  main_tweet={body:"---",likescount:100,isActive:true}
+  hostevent(isFavorite:farvoriteInputType)
+  {
+console.log("host event fired...",isFavorite.newValue);
+
+  }
  
   CummunivationsMethods=[{id:1,name:"Email"},{id:2,name:"phone"}];
   viewMode:string="map";
